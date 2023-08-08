@@ -28,8 +28,8 @@ const CreatePost = () => {
     if (form.prompt) {
       try {
         setGeneratingImg(true);
-        // const response = await fetch('http://localhost:8080/api/v1/dalle', {
-        const response = await fetch('https://dalle-clone-fi9f.onrender.com/api/v1/dalle', {
+        const response = await fetch('http://localhost:8080/api/v1/dalle', {
+        // const response = await fetch('https://dalle-clone-fi9f.onrender.com/api/v1/dalle', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ const CreatePost = () => {
         });
         
         console.log(response)
-        const data = await response.json();
+        const data = response.JSON();
         setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
       } catch (err) {
         console.log(err)
@@ -58,8 +58,8 @@ const CreatePost = () => {
     if (form.prompt && form.photo) {
       setLoading(true);
       try {
-        // const response = await fetch('http://localhost:8080/api/v1/post', {
-        const response = await fetch('https://dalle-clone-fi9f.onrender.com/api/v1/post', {
+        const response = await fetch('http://localhost:8080/api/v1/post', {
+        // const response = await fetch('https://dalle-clone-fi9f.onrender.com/api/v1/post', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
