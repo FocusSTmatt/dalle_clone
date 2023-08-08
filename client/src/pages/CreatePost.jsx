@@ -39,8 +39,8 @@ const CreatePost = () => {
           }),
         });
         
+        console.log(response)
         const data = await response.json();
-        console.log(data)
         setForm({ ...form, photo: `data:image/jpeg;base64,${data.photo}` });
       } catch (err) {
         console.log(err)
@@ -65,13 +65,17 @@ const CreatePost = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({...form}),
-        });
+          
+        },
+        console.log(response)
+        );
 
         await response.json();
         alert('Success');
         navigate('/');
       } catch (err) {
         alert(err);
+        console.log(err)
       } finally {
         setLoading(false);
       }
